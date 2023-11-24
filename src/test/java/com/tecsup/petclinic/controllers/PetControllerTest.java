@@ -52,7 +52,7 @@ class PetControllerTest {
         String NAME_PET= "Leo";
         int TYPE_ID= 1;
         int OWNER_ID = 1;
-        Date DATE = new SimpleDateFormat("yyyy-MM-dd").parse("2023-11-01");
+        Date DATE = new SimpleDateFormat("yyyy-MM-dd").parse("2000-09-07");
         String DATE_STRING = new SimpleDateFormat("yyyy-MM-dd").format(DATE);
 
 
@@ -66,7 +66,6 @@ class PetControllerTest {
                 .andExpect( jsonPath("$.birth_date").value(DATE_STRING));
 
     }
-
     @Test
     public void testFindPetKO() throws Exception {
         this.mockMvc.perform(get("/pets/666"))
@@ -80,6 +79,7 @@ class PetControllerTest {
         int OWNER_ID = 1;
         String DATE_REF = "2021-11-16";
         java.sql.Date DATE =  java.sql.Date.valueOf(DATE_REF);
+
         PetDTO newPet = new PetDTO(NAME_PET,TYPE_ID,OWNER_ID, DATE);
         //logger.info(newPet.toString());
         //logger.info(om.writeValueAsString(newPet));
